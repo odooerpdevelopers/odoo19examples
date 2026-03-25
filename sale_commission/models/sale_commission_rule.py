@@ -1,9 +1,10 @@
-from odoo import fields, models
+# -*- coding: utf-8 -*-
+from odoo import api, fields, models
 
 
 class SaleCommissionRule(models.Model):
     _name = "sale.commission.rule"
-    _description = "Regla de comisión de vendedor"
+    _description = "Regla de Comisión de Venta"
     _order = "user_id, id"
 
     name = fields.Char(
@@ -12,14 +13,16 @@ class SaleCommissionRule(models.Model):
     )
     user_id = fields.Many2one(
         comodel_name="res.users",
-        string="Vendedor",
+        string="Usuario",
         required=True,
-        domain=[("share", "=", False)],
+        domain=[("internal", "=", True)],
+        help="Usuario interno asignado a esta regla de comisión",
     )
     commission_percent = fields.Float(
-        string="Porcentaje (%)",
+        string="Porcentaje de Comisión",
         required=True,
         digits=(5, 2),
+        help="Porcentaje de comisión a aplicar",
     )
     active = fields.Boolean(
         string="Activo",
@@ -28,13 +31,23 @@ class SaleCommissionRule(models.Model):
     commission_line_ids = fields.One2many(
         comodel_name="sale.commission.line",
         inverse_name="rule_id",
-        string="Histórico de comisiones",
+        string="Líneas de Comisión",
+        copy=False,
     )
 
     _sql_constraints = [
-        models.Constraint(
+        (
             "unique_user_active",
-            "UNIQUE(user_id, active)",
-            "Ya existe una regla activa para este vendedor.",
+            "UNIQUE(user_id, active) WHERE active = true",
+            "Solo puede haber una regla activa por usuario",
         ),
     ]
+
+    @api.constrains("commission_percent")
+    def _check_commission_percent(self):
+        """Validar que el porcentaje sea positivo"""
+        for record in self:
+            if record.commission_percent < 0:
+                raise models.ValidationError(
+                    "El porcentaje de comisión no puede ser negativo"
+                )

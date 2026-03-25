@@ -1,59 +1,70 @@
+# -*- coding: utf-8 -*-
 from odoo import api, fields, models
 
 
 class SaleCommissionLine(models.Model):
-    _name = "sale.commission.line"
-    _description = "Línea de comisión generada"
-    _order = "order_id desc"
+    _name = 'sale.commission.line'
+    _description = 'Línea de Comisión de Venta'
+    _order = 'order_id, id'
 
     order_id = fields.Many2one(
-        comodel_name="sale.order",
-        string="Pedido de venta",
+        comodel_name='sale.order',
+        string='Pedido',
         required=True,
-        ondelete="cascade",
+        ondelete='cascade',
+        help='Pedido de venta asociado',
     )
     rule_id = fields.Many2one(
-        comodel_name="sale.commission.rule",
-        string="Regla aplicada",
+        comodel_name='sale.commission.rule',
+        string='Regla de Comisión',
         required=True,
+        ondelete='cascade',
+        help='Regla de comisión aplicada',
     )
     user_id = fields.Many2one(
-        comodel_name="res.users",
-        string="Vendedor",
-        related="rule_id.user_id",
+        related='rule_id.user_id',
+        string='Usuario',
         store=True,
+        readonly=True,
     )
     commission_percent = fields.Float(
-        string="% Aplicado",
-        related="rule_id.commission_percent",
+        related='rule_id.commission_percent',
+        string='Porcentaje',
         store=True,
+        readonly=True,
     )
     amount_total = fields.Monetary(
-        string="Base (importe pedido)",
-        related="order_id.amount_total",
+        related='order_id.amount_total',
+        string='Total Pedido',
         store=True,
+        readonly=True,
     )
     commission_amount = fields.Monetary(
-        string="Importe comisión",
-        compute="_compute_commission_amount",
+        string='Monto Comisión',
+        compute='_compute_commission_amount',
         store=True,
+        readonly=True,
     )
     currency_id = fields.Many2one(
-        related="order_id.currency_id",
+        related='order_id.currency_id',
+        string='Moneda',
         store=True,
+        readonly=True,
     )
     state = fields.Selection(
         selection=[
-            ("draft", "Borrador"),
-            ("confirmed", "Confirmada"),
-            ("paid", "Pagada"),
+            ('draft', 'Borrador'),
+            ('confirmed', 'Confirmado'),
+            ('paid', 'Pagado'),
         ],
-        string="Estado",
-        default="draft",
-        required=True,
+        string='Estado',
+        default='draft',
     )
 
-    @api.depends("amount_total", "commission_percent")
+    @api.depends('amount_total', 'commission_percent')
     def _compute_commission_amount(self):
-        for line in self:
-            line.commission_amount = line.amount_total * line.commission_percent / 100
+        """Calcular monto de comisión"""
+        for record in self:
+            record.commission_amount = (
+                record.amount_total * record.commission_percent / 100
+            )

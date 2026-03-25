@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <!-- tree View for sale.commission.line -->
+  <record id="view_sale_commission_line_tree" model="ir.ui.view">
+    <field name="name">sale.commission.line.tree</field>
+    <field name="model">sale.commission.line</field>
+    <field name="arch" type="xml">
+      <tree
+        string="Líneas de Comisión"
+        decoration-success="state == 'paid'"
+        decoration-info="state == 'confirmed'"
+        decoration-warning="state == 'draft'"
+      >
+        <field name="order_id" />
+        <field name="user_id" />
+        <field name="amount_total" />
+        <field name="commission_percent" />
+        <field name="commission_amount" />
+        <field name="state" />
+      </tree>
+    </field>
+  </record>
+
+  <!-- Form View for sale.commission.line -->
+  <record id="view_sale_commission_line_form" model="ir.ui.view">
+    <field name="name">sale.commission.line.form</field>
+    <field name="model">sale.commission.line</field>
+    <field name="arch" type="xml">
+      <form string="Línea de Comisión">
+        <sheet>
+          <group>
+            <group>
+              <field name="order_id" />
+              <field name="rule_id" />
+              <field name="user_id" />
+            </group>
+            <group>
+              <field name="state" />
+              <field name="commission_percent" />
+              <field name="amount_total" />
+            </group>
+          </group>
+          <group>
+            <field name="commission_amount" />
+            <field name="currency_id" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Search View for sale.commission.line -->
+  <record id="view_sale_commission_line_search" model="ir.ui.view">
+    <field name="name">sale.commission.line.search</field>
+    <field name="model">sale.commission.line</field>
+    <field name="arch" type="xml">
+      <search string="Líneas de Comisión">
+        <field name="order_id" />
+        <field name="user_id" />
+        <separator />
+        <filter name="draft" string="Borrador" domain="[('state', '=', 'draft')]" />
+        <filter
+          name="confirmed"
+          string="Confirmado"
+          domain="[('state', '=', 'confirmed')]"
+        />
+        <filter name="paid" string="Pagado" domain="[('state', '=', 'paid')]" />
+      </search>
+    </field>
+  </record>
+
+  <!-- Action for sale.commission.line -->
+  <record id="action_sale_commission_line" model="ir.actions.act_window">
+    <field name="name">Líneas de Comisión</field>
+    <field name="res_model">sale.commission.line</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">Líneas de comisión generadas</p>
+    </field>
+  </record>
+
+  <!-- Menu for sale.commission.line -->
+  <menuitem
+    id="menu_sale_commission_line"
+    name="Líneas de Comisión"
+    action="action_sale_commission_line"
+    parent="sale.sale_menu_root"
+    sequence="31"
+  />
+</odoo>

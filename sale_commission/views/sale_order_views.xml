@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-  <record id="view_sale_order_form_commission" model="ir.ui.view">
-    <field name="name">sale.order.form.commission</field>
+  <!-- Inherited Form View for sale.order -->
+  <record id="view_order_form_inherit_commission" model="ir.ui.view">
+    <field name="name">sale.order.form.inherit.commission</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form" />
     <field name="arch" type="xml">
-      <notebook position="inside">
+      <xpath expr="//notebook" position="inside">
         <page string="Comisión" name="commission">
           <group>
-            <group string="Regla aplicada">
+            <group>
               <field name="commission_rule_id" />
-              <field name="commission_percent" string="% Comisión" />
+              <field name="commission_percent" />
+            </group>
+            <group>
               <field name="commission_amount" />
             </group>
           </group>
-          <field name="commission_line_ids" readonly="1">
-            <list>
-              <field name="rule_id" />
-              <field name="commission_percent" string="%" />
+          <separator string="Líneas de Comisión" />
+          <field name="commission_line_ids">
+            <tree>
+              <field name="user_id" />
+              <field name="commission_percent" />
+              <field name="amount_total" />
               <field name="commission_amount" />
               <field name="state" />
-            </list>
+            </tree>
           </field>
         </page>
-      </notebook>
+      </xpath>
     </field>
   </record>
 </odoo>
