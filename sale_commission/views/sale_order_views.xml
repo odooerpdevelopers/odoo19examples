@@ -1,34 +1,39 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- Inherited Form View for sale.order -->
-  <record id="view_order_form_inherit_commission" model="ir.ui.view">
-    <field name="name">sale.order.form.inherit.commission</field>
-    <field name="model">sale.order</field>
-    <field name="inherit_id" ref="sale.view_order_form" />
-    <field name="arch" type="xml">
-      <xpath expr="//notebook" position="inside">
-        <page string="Comisión" name="commission">
-          <group>
-            <group>
-              <field name="commission_rule_id" />
-              <field name="commission_percent" />
-            </group>
-            <group>
-              <field name="commission_amount" />
-            </group>
-          </group>
-          <separator string="Líneas de Comisión" />
-          <field name="commission_line_ids">
-            <tree>
-              <field name="user_id" />
-              <field name="commission_percent" />
-              <field name="amount_total" />
-              <field name="commission_amount" />
-              <field name="state" />
-            </tree>
-          </field>
-        </page>
-      </xpath>
-    </field>
-  </record>
+
+    <!-- Inherited Form View for sale.order -->
+    <record id="view_order_form_inherit_commission" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.commission</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Comisión" name="commission">
+                    <group>
+                        <group>
+                            <field name="commission_rule_id"/>
+                            <field name="commission_percent" widget="float"/>
+                        </group>
+                        <group>
+                            <field name="commission_amount"/>
+                        </group>
+                    </group>
+                    <separator string="Líneas de Comisión"/>
+                    <field name="commission_line_ids">
+                        <list
+                            decoration-success="state == 'paid'"
+                            decoration-info="state == 'confirmed'"
+                            decoration-warning="state == 'draft'">
+                            <field name="user_id"/>
+                            <field name="commission_percent"/>
+                            <field name="amount_total"/>
+                            <field name="commission_amount"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

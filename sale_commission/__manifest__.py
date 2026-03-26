@@ -1,5 +1,5 @@
 {
-    "name": "Sales Commission",
+    "name": "Comisiones de Venta",
     "version": "1.0.0",
     "category": "Sales",
     "summary": "Gestión de comisiones de vendedores",
