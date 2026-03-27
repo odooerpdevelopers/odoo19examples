@@ -442,14 +442,17 @@ Tabla sale.commission.rule
 
 | id  | name         | user_id | commission_percent | active |
 | --- | ------------ | ------- | ------------------ | ------ |
-| 1   | Regla Felipe | 2       | 10 %               | True   |
-| 2   | Regla Ana    | 9       | 15 %               | True   |
+| 1   | Regla Felipe | 5       | 10 %               | True   |
+| 2   | Regla Ana    | 6       | 15 %               | True   |
 
 ---
 
-Tabla res.users | id | name | login | active | share |
-|----|-------------|--------------|--------|-------| | 2 | Felipe | felipe@mail | True |
-False | | 9 | Ana | ana@mail | True | False |
+Tabla res.users 
+
+| id | name   | login        | active | share |
+|----|--------|-------------|--------|-------|
+| 5  | Felipe | felipe@mail | True   | False |
+| 6  | Ana    | ana@mail    | True   | False |
 
 #### One2many
 
@@ -473,7 +476,7 @@ Pedido (sale.order)
 
 | id  | name  | user_id   | amount_total |
 | --- | ----- | --------- | ------------ |
-| 1   | SO001 | (2)Felipe | 125.00 €     |
+| 1   | SO001 | (5)Felipe | 125.00 €     |
 
 ---
 
@@ -481,8 +484,8 @@ Linea de comisión (sale.commission.line)
 
 | id  | order_id | user_id   | product    | base_amount | commission_percent | commission_amount |
 | --- | -------- | --------- | ---------- | ----------- | ------------------ | ----------------- |
-| 1   | 1        | (2)Felipe | Producto A | 25.00 €     | 10 %               | 2.50 €            |
-| 2   | 1        | (2)Felipe | Producto B | 100.00 €    | 10 %               | 10.00 €           |
+| 1   | 1        | (5)Felipe | Producto A | 25.00 €     | 10 %               | 2.50 €            |
+| 2   | 1        | (5)Felipe | Producto B | 100.00 €    | 10 %               | 10.00 €           |
 
 📖 Documentación oficial Odoo:
 [relational-fields](https://www.odoo.com/documentation/19.0/developer/reference/backend/orm.html#relational-fields)
