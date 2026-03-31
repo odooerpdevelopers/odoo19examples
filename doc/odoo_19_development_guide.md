@@ -46,11 +46,18 @@ Necesitas una instalación de Odoo 19 funcionando en local.
 
 ### Editor + IA
 
-Para desarrollar con ayuda de IA tienes muchas opciones, y lo más probable es que ya uses alguna herramienta con suscripción activa, como **Claude Code**, **Codex** o **Gemini CLI**.
+Para desarrollar con ayuda de IA tienes muchas opciones, y lo más probable es que ya
+uses alguna herramienta con suscripción activa, como **Claude Code**, **Codex** o
+**Gemini CLI**.
 
-En esta guía usaré **Zed Editor** con **GitHub Copilot**, pero puedes trabajar perfectamente con **PyCharm**, **VS Code**, **Cursor** o cualquier otro editor que tenga una buena integración con IA. En la práctica, el resultado suele ser muy parecido. Lo importante no es tanto el editor, sino que te sientas cómodo usándolo y que la integración con IA sea fluida.
+En esta guía usaré **Zed Editor** con **GitHub Copilot**, pero puedes trabajar
+perfectamente con **PyCharm**, **VS Code**, **Cursor** o cualquier otro editor que tenga
+una buena integración con IA. En la práctica, el resultado suele ser muy parecido. Lo
+importante no es tanto el editor, sino que te sientas cómodo usándolo y que la
+integración con IA sea fluida.
 
-Si tuviera que recomendar un modelo, el que mejor resultado me está dando ahora mismo es **Claude Sonnet** de Anthropic.
+Si tuviera que recomendar un modelo, el que mejor resultado me está dando ahora mismo es
+**Claude Sonnet** de Anthropic.
 
 Entorno Odoo con ZED:
 [Zed Editor](https://youtube.com/playlist?list=PLZ4jpQqTamn1jwYUUZCuJj4uOfNF6Q2Dx&si=k9GnDZgMDulMjUEt)
@@ -252,6 +259,44 @@ SEGURIDAD:
 - Existen las vistas
 - Existe el CSV de seguridad
 - El módulo ya tiene forma completa
+
+---
+
+### Prompt 3 — Alternativa para generar el código (mas enfocado a la realidad)
+
+```text
+Quiero que generes un módulo para Odoo 18 o 19 llamado `tl_sale_commission` en la raiz del proyecto para la gestión de comisiones de venta.
+
+### Lo que nos pide el cliente:
+
+> "Necesitamos un módulo para gestionar las comisiones de nuestros vendedores. Queremos
+> poder configurar un porcentaje de comisión para cada vendedor, que se aplique
+> automáticamente a los pedidos de venta. Además, necesitamos llevar un histórico de las
+> comisiones generadas por cada pedido y poder consultarlas fácilmente desde el menú de
+> ventas."
+
+
+Contexto:
+El cliente necesita gestionar comisiones para vendedores. Cada vendedor debe poder tener una configuración de comisión y esa información debe estar relacionada con los pedidos de venta. También se necesita conservar un histórico de las comisiones generadas para poder consultarlo más adelante desde el módulo de Ventas.
+
+Qué debería cubrir este primer borrador:
+- una forma de definir comisiones por vendedor
+- integración con pedidos de venta
+- generación o registro de comisiones asociadas a los pedidos
+- menús y vistas básicas dentro de Ventas para poder usarlo (Sale > Comissions > Comission Rules, Sale > Comissions > Comission Lines)
+
+Instrucciones:
+- genera el módulo completo con una estructura estándar de Odoo
+- crea los modelos, vistas, menús, seguridad y herencias que consideres necesarias
+- mantén la solución simple y razonable
+- la comision del vendedor se aplicará sobre el total del pedido
+- la comision del vendedor se creará al confirmar el pedido
+- reparte el código en los archivos correspondientes del módulo
+- aplicar el formato + lint con Ruff a 88 caracteres por linea
+- aplicar Prettier para formato XML a 2 espacios
+
+Al terminar, imprime solo: Tarea terminada
+```
 
 ---
 
