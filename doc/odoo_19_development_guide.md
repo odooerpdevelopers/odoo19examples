@@ -292,8 +292,10 @@ Instrucciones:
 - la comision del vendedor se aplicará sobre el total del pedido
 - la comision del vendedor se creará al confirmar el pedido
 - reparte el código en los archivos correspondientes del módulo
-- aplicar el formato + lint con Ruff a 88 caracteres por linea
-- aplicar Prettier para formato XML a 2 espacios
+- aplicar el formato + lint con Ruff a 88 caracteres por linea (sin instalar ruff en local)
+- aplicar Prettier para formato XML a 2 espacios (sin instalar nada en local, el código ya tiene que salir formateado)
+- revisar que los ficheros xml en el manifest estén en el orden correcto para evitar errores de instalación
+- revisar que los ficheros __init__.py importen lo necesario para que el módulo funcione
 
 Al terminar, imprime solo: Tarea terminada
 ```
