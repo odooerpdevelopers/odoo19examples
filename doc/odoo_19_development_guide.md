@@ -44,10 +44,13 @@ Necesitas una instalación de Odoo 19 funcionando en local.
 
 **Odoo 19 Enterprise** pero el módulo funciona igual en **Community**.
 
-### Editor
+### Editor + IA
 
-Usaré **Zed Editor** con GitHub Copilot. Puedes usar **PyCharm**, **VSCode**, **Cursor**
-o cualquier editor con IA. El proceso es el mismo.
+Para desarrollar con ayuda de IA tienes muchas opciones, y lo más probable es que ya uses alguna herramienta con suscripción activa, como **Claude Code**, **Codex** o **Gemini CLI**.
+
+En esta guía usaré **Zed Editor** con **GitHub Copilot**, pero puedes trabajar perfectamente con **PyCharm**, **VS Code**, **Cursor** o cualquier otro editor que tenga una buena integración con IA. En la práctica, el resultado suele ser muy parecido. Lo importante no es tanto el editor, sino que te sientas cómodo usándolo y que la integración con IA sea fluida.
+
+Si tuviera que recomendar un modelo, el que mejor resultado me está dando ahora mismo es **Claude Sonnet** de Anthropic.
 
 Entorno Odoo con ZED:
 [Zed Editor](https://youtube.com/playlist?list=PLZ4jpQqTamn1jwYUUZCuJj4uOfNF6Q2Dx&si=k9GnDZgMDulMjUEt)
@@ -447,12 +450,12 @@ Tabla sale.commission.rule
 
 ---
 
-Tabla res.users 
+Tabla res.users
 
-| id | name   | login        | active | share |
-|----|--------|-------------|--------|-------|
-| 5  | Felipe | felipe@mail | True   | False |
-| 6  | Ana    | ana@mail    | True   | False |
+| id  | name   | login       | active | share |
+| --- | ------ | ----------- | ------ | ----- |
+| 5   | Felipe | felipe@mail | True   | False |
+| 6   | Ana    | ana@mail    | True   | False |
 
 #### One2many
 
