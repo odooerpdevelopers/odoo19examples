@@ -300,6 +300,78 @@ Instrucciones:
 Al terminar, imprime solo: Tarea terminada
 ```
 
+### Prompt 4 (Opcional estilo mas consultor, poco conocimiento de los modelos y campos)
+
+```text
+# Prompt: Crear Módulo de comisiones de venta para Odoo 19
+
+## Lo que el cliente necesita
+
+El cliente quiere gestionar las comisiones de sus vendedores directamente
+desde Odoo. Cada vendedor tiene un porcentaje de comisión fijo que se le
+configura una sola vez en su perfil de usuario. Ese porcentaje se aplica
+automáticamente sobre el total de cada pedido de venta que tenga asignado
+ese vendedor.
+
+El cliente quiere ver la comisión calculada dentro del propio pedido, en
+una pestaña específica, y también quiere poder consultar un listado global
+de todas las comisiones generadas desde el menú de Ventas.
+
+Cuando un pedido se confirma, la comisión debe quedar registrada como
+confirmada. Mientras el pedido está en borrador, la comisión puede cambiar
+si cambia el vendedor o el importe del pedido.
+
+---
+
+## Lo que debe poder hacer el cliente
+
+- Configurar el porcentaje de comisión de cada vendedor desde su ficha
+  de usuario, sin tener que entrar al pedido
+- Ver en cada pedido de venta cuánto corresponde de comisión y a qué
+  vendedor
+- Consultar el historial completo de comisiones generadas, con filtros
+  por vendedor y por estado
+- Saber qué comisiones están confirmadas y cuáles todavía en borrador
+
+---
+
+## Comportamiento esperado
+
+- El cálculo de la comisión debe ser automático: si cambia el vendedor
+  del pedido o cambia el total, la comisión se actualiza sola sin que
+  el usuario tenga que hacer nada
+- No se debe poder editar manualmente el importe de comisión calculado,
+  es siempre resultado del porcentaje aplicado al total del pedido
+- Al confirmar el pedido la comisión pasa a estado confirmado
+- Un pedido tiene una sola comisión asociada en este primer borrador
+
+---
+
+## Accesos y permisos
+
+- Un vendedor puede ver sus comisiones pero no modificarlas
+- Un jefe de ventas puede ver todas las comisiones
+- Solo el administrador puede modificar porcentajes y configuraciones
+
+---
+
+## Instrucciones para el agente
+
+- Crea el módulo con nombre `tl_sale_commission` en la raíz del proyecto
+- Usa estructura estándar de módulo Odoo 19
+- Decide tú qué modelos, campos, vistas y herencias son necesarios para
+  cumplir lo que el cliente pide
+- Usa los grupos y permisos correctos de Odoo 19 para el módulo de ventas
+- Reparte el código en los archivos que correspondan dentro del módulo
+- El código ya debe salir formateado, no instales ninguna herramienta
+  externa durante la generación
+- Revisa que el manifest liste los archivos en el orden correcto para
+  evitar errores al instalar
+- Revisa que todos los `__init__.py` importen lo necesario
+- Al terminar imprime solo: `Tarea terminada`
+
+```
+
 ---
 
 ## 5. Refactorizar lo que la IA genera de más
