@@ -10,7 +10,7 @@
         <page name="commission_info" string="Commission">
           <group>
             <group>
-              <field name="commission_rule_id" />
+              <field name="commission_rule_id" readonly="state == 'sale'" />
               <field name="commission_percent" />
               <field name="commission_amount" />
             </group>
