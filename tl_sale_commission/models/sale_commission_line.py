@@ -30,9 +30,9 @@ class SaleCommissionLine(models.Model):
         readonly=True,
         digits=(5, 2),
     )
-    amount_total = fields.Monetary(
-        related="order_id.amount_total",
-        string="Order Amount",
+    amount_untaxed = fields.Monetary(
+        related="order_id.amount_untaxed",
+        string="Untaxed Amount",
         store=True,
         readonly=True,
     )
@@ -58,9 +58,7 @@ class SaleCommissionLine(models.Model):
         string="State",
     )
 
-    @api.depends("amount_total", "commission_percent")
+    @api.depends("amount_untaxed", "commission_percent")
     def _compute_commission_amount(self):
         for line in self:
-            line.commission_amount = (
-                line.amount_total * line.commission_percent / 100
-            )
+            line.commission_amount = line.amount_untaxed * line.commission_percent / 100

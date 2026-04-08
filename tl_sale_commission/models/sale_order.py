@@ -55,19 +55,20 @@ class SaleOrder(models.Model):
     @api.depends("amount_total", "commission_percent")
     def _compute_commission_amount(self):
         for order in self:
-            order.commission_amount = (
-                order.amount_total * order.commission_percent / 100
-            )
+            c_percent = order.commission_percent
+            order.commission_amount = order.amount_untaxed * c_percent / 100
 
     def action_confirm(self):
         result = super().action_confirm()
         for order in self:
             if order.commission_rule_id:
                 self.env["sale.commission.line"].create(
-                    [{
-                        "order_id": order.id,
-                        "rule_id": order.commission_rule_id.id,
-                        "state": "confirmed",
-                    }]
+                    [
+                        {
+                            "order_id": order.id,
+                            "rule_id": order.commission_rule_id.id,
+                            "state": "confirmed",
+                        }
+                    ]
                 )
         return result

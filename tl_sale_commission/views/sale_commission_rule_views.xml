@@ -58,7 +58,7 @@
         <field name="order_id" />
         <field name="user_id" />
         <field name="commission_percent" />
-        <field name="amount_total" />
+        <field name="amount_untaxed" />
         <field name="commission_amount" />
         <field name="state" />
       </list>

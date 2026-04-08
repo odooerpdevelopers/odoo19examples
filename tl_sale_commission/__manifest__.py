@@ -1,6 +1,6 @@
 {
     "name": "Sale Commission V4",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Sales",
     "author": "CampusCleverit",
     "license": "LGPL-3",
