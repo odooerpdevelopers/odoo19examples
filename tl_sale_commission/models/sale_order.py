@@ -63,13 +63,10 @@ class SaleOrder(models.Model):
         result = super().action_confirm()
         for order in self:
             if order.commission_rule_id:
-                self.env["sale.commission.line"].create(
-                    [
-                        {
-                            "order_id": order.id,
-                            "rule_id": order.commission_rule_id.id,
-                            "state": "confirmed",
-                        }
-                    ]
-                )
+                scl_vals = {
+                    "order_id": order.id,
+                    "rule_id": order.commission_rule_id.id,
+                    "state": "confirmed",
+                }
+                self.env["sale.commission.line"].create([scl_vals])
         return result

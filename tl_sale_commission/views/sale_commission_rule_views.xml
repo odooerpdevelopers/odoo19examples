@@ -88,7 +88,7 @@
     id="menu_commissions"
     name="Commissions"
     parent="sale.sale_menu_root"
-    sequence="20"
+    sequence="40"
   />
 
   <!-- Submenu for Commission Rules -->
