@@ -9,6 +9,7 @@ class SaleOrder(models.Model):
         string="Commission Rule",
         compute="_compute_commission_rule_id",
         store=True,
+        precompute=True,
         readonly=False,
     )
     commission_percent = fields.Float(
