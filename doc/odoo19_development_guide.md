@@ -26,15 +26,22 @@ Si sigues estos pasos en orden, terminas con el módulo funcionando.
 
 > Está ordenada para que construyas la app completa sin perderte.
 
-Aunque afuera todo el mundo te dice que no hace falta saber programar en Odoo cuando
+---
 
-usas IA, en estas clases vas a ver que sí hace falta. Y mucho. La IA acelera, pero el
+Hay mucha gente que dice que con IA ya no hace falta saber programar en Odoo. En este
+curso vas a ver por qué eso es un error.
 
-sistema lo pone el dev. La IA ayuda que generes el codio mas rapido, pero el código lo
+Odoo no es solo Python, HTML, XML y JavaScript. No es como montar una app en Node o
+React donde el estándar lo decides tú. Odoo es un ERP con su propio framework, sus
+propias convenciones y, sobre todo, un modelo de datos relacional que tiene años de
+evolución encima.
 
-tienes que entender para poder corregirlo, integrarlo y mantenerlo. No es
+Si no entiendes cómo se relacionan los modelos entre sí, cómo funciona el ORM, vas a
+poder generar código con IA, sí, pero no vas a poder mantenerlo, escalarlo ni integrarlo
+con el resto del sistema sin romper cosas.
 
-copy-paste. Es copy-understand-improve.
+La IA acelera. Pero el estandar de desarrollo técnico lo pone el dev. Aquí no es
+copy-paste. Es copy → understand → improve y lo verás desde el primer minuto.
 
 ---
 
