@@ -5,7 +5,7 @@
 
 ---
 
-# 🔴 ORDEN DE TRABAJO (SÍGUELO TAL CUAL)
+# 🟢 ORDEN DE TRABAJO (SÍGUELO TAL CUAL)
 
 Si sigues estos pasos en orden, terminas con el módulo funcionando.
 
@@ -20,8 +20,21 @@ Si sigues estos pasos en orden, terminas con el módulo funcionando.
 9. Entender el código clave
 10. Validar el resultado final
 
+---
+
 > Esta guía está pensada para seguir la clase paso a paso. No es documentación suelta.
+
 > Está ordenada para que construyas la app completa sin perderte.
+
+Aunque afuera todo el mundo te dice que no hace falta saber programar en Odoo cuando
+
+usas IA, en estas clases vas a ver que sí hace falta. Y mucho. La IA acelera, pero el
+
+sistema lo pone el dev. La IA ayuda que generes el codio mas rapido, pero el código lo
+
+tienes que entender para poder corregirlo, integrarlo y mantenerlo. No es
+
+copy-paste. Es copy-understand-improve.
 
 ---
 
@@ -77,6 +90,14 @@ Todo el código de esta clase está disponible en:
 - acceso a tu carpeta `extra-addons` o la que uses para desarrollo
 - un editor abierto
 - acceso al repositorio y esta guía
+
+### Eres nuevo desarrollando en Odoo?
+
+Si es asi no te preocupes, te recomiendo que antes de nada veas esta playlist para
+entender los conceptos básicos de desarrollo en Odoo:
+
+- [Estructura de un módulo Odoo](https://youtu.be/vdcYuOUDn84?si=iUT58bMV6pb-iIYF)
+- [Creando un módulo desde cero en Odoo ](https://youtu.be/T2EQu8qlvXE?si=y5IvUeZDuap1t0zb)
 
 ---
 
