@@ -6,8 +6,10 @@
     <field name="report_type">qweb-pdf</field>
     <field name="report_name">tl_sale_commissions.commission_line_report</field>
     <field name="report_file">tl_sale_commissions.commission_line_report</field>
-    <field name="print_report_name">('Commissions Report - %s' % (time.strftime('%Y-%m-%d')))</field>
-    <field name="binding_model_id" ref="model_sale_commission_line"/>
+    <field
+      name="print_report_name"
+    >('Commissions Report - %s' % (time.strftime('%Y-%m-%d')))</field>
+    <field name="binding_model_id" ref="model_sale_commission_line" />
     <field name="binding_type">report</field>
   </record>
 
@@ -18,13 +20,13 @@
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-xs-12 text-center">
               <h2>Commissions Report</h2>
-              <span t-esc="time.strftime('%Y-%m-%d %H:%M')"/>
+              <span t-esc="time.strftime('%Y-%m-%d %H:%M')" />
             </div>
           </div>
 
           <t t-foreach="group_data" t-as="group">
             <h3>
-              <t t-esc="group['user'].name"/>
+              <t t-esc="group['user'].name" />
             </h3>
 
             <table class="table table-sm table-bordered" style="margin-bottom: 20px;">
@@ -42,23 +44,29 @@
               <tbody>
                 <t t-foreach="group['lines']" t-as="l">
                   <tr>
-                    <td t-esc="l.order_id.name"/>
+                    <td t-esc="l.order_id.name" />
                     <td>
-                      <span t-esc="l.order_id.date_order
+                      <span
+                        t-esc="l.order_id.date_order
                         and l.order_id.date_order.strftime('%Y-%m-%d')
-                        or ''"/>
+                        or ''"
+                      />
                     </td>
-                    <td t-esc="l.commission_id.name"/>
+                    <td t-esc="l.commission_id.name" />
                     <td class="text-right">
-                      <t t-esc="'%.2f' % l.commission_percent"/>%
-                    </td>
-                    <td class="text-right">
-                      <span t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.amount_untaxed)"/>
+                      <t t-esc="'%.2f' % l.commission_percent" />%
                     </td>
                     <td class="text-right">
-                      <span t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.commission_amount)"/>
+                      <span
+                        t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.amount_untaxed)"
+                      />
                     </td>
-                    <td t-esc="l.state"/>
+                    <td class="text-right">
+                      <span
+                        t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.commission_amount)"
+                      />
+                    </td>
+                    <td t-esc="l.state" />
                   </tr>
                 </t>
               </tbody>
@@ -66,12 +74,16 @@
                 <tr style="font-weight: bold; background-color: #f9f9f9;">
                   <td colspan="4">Subtotal</td>
                   <td class="text-right">
-                    <span t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_untaxed'])"/>
+                    <span
+                      t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_untaxed'])"
+                    />
                   </td>
                   <td class="text-right">
-                    <span t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_commission'])"/>
+                    <span
+                      t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_commission'])"
+                    />
                   </td>
-                  <td/>
+                  <td />
                 </tr>
               </tfoot>
             </table>
@@ -91,13 +103,17 @@
               <tbody>
                 <t t-foreach="group_data" t-as="group">
                   <tr>
-                    <td t-esc="group['user'].name"/>
-                    <td class="text-right" t-esc="group['count']"/>
+                    <td t-esc="group['user'].name" />
+                    <td class="text-right" t-esc="group['count']" />
                     <td class="text-right">
-                      <span t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_untaxed'])"/>
+                      <span
+                        t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_untaxed'])"
+                      />
                     </td>
                     <td class="text-right">
-                      <span t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_commission'])"/>
+                      <span
+                        t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_commission'])"
+                      />
                     </td>
                   </tr>
                 </t>
@@ -105,12 +121,16 @@
               <tfoot>
                 <tr style="font-weight: bold; background-color: #f9f9f9;">
                   <td>Grand Total</td>
-                  <td class="text-right" t-esc="grand_count"/>
+                  <td class="text-right" t-esc="grand_count" />
                   <td class="text-right">
-                    <span t-esc="'%s %.2f' % ((docs[0].currency_id.symbol or ''), grand_untaxed)"/>
+                    <span
+                      t-esc="'%s %.2f' % ((docs[0].currency_id.symbol or ''), grand_untaxed)"
+                    />
                   </td>
                   <td class="text-right">
-                    <span t-esc="'%s %.2f' % ((docs[0].currency_id.symbol or ''), grand_commission)"/>
+                    <span
+                      t-esc="'%s %.2f' % ((docs[0].currency_id.symbol or ''), grand_commission)"
+                    />
                   </td>
                 </tr>
               </tfoot>
