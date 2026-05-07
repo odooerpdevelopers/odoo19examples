@@ -53,7 +53,9 @@ class SaleOrder(models.Model):
     @api.depends("amount_untaxed", "commission_percent")
     def _compute_commission_amount(self):
         for order in self:
-            order.commission_amount = order.amount_untaxed * order.commission_percent / 100
+            order.commission_amount = (
+                order.amount_untaxed * order.commission_percent / 100
+            )
 
     def action_confirm(self):
         res = super().action_confirm()

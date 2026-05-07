@@ -2,7 +2,7 @@
     "name": "TL Sale Commissions",
     "version": "19.0.1.0.0",
     "category": "Sales",
-    "author": "CampusCleverit",
+    "author": "TrotonLabs",
     "license": "LGPL-3",
     "depends": ["sale"],
     "data": [
