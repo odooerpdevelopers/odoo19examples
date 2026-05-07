@@ -10,6 +10,7 @@
         "views/sale_commission_views.xml",
         "views/sale_commission_line_views.xml",
         "views/sale_order_views.xml",
+        "views/sale_commission_line_report.xml",
     ],
     "installable": True,
     "application": False,
