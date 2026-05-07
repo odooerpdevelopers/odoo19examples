@@ -12,20 +12,21 @@ class SaleCommissionLine(models.Model):
         required=True,
         ondelete="cascade",
     )
-    rule_id = fields.Many2one(
-        comodel_name="sale.commission.rule",
+    commission_id = fields.Many2one(
+        comodel_name="sale.commission",
         string="Commission Rule",
         required=True,
+        ondelete="restrict",
     )
     user_id = fields.Many2one(
-        related="rule_id.user_id",
-        string="User",
+        related="commission_id.user_id",
+        string="Salesperson",
         store=True,
         readonly=True,
     )
     commission_percent = fields.Float(
-        related="rule_id.commission_percent",
-        string="Commission Percentage",
+        related="commission_id.commission_percent",
+        string="Commission (%)",
         store=True,
         readonly=True,
         digits=(5, 2),
@@ -62,3 +63,9 @@ class SaleCommissionLine(models.Model):
     def _compute_commission_amount(self):
         for line in self:
             line.commission_amount = line.amount_untaxed * line.commission_percent / 100
+
+    def action_confirm(self):
+        self.write({"state": "confirmed"})
+
+    def action_set_paid(self):
+        self.write({"state": "paid"})
