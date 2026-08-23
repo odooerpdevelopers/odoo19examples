@@ -15,7 +15,7 @@
 
   <template id="commission_line_report">
     <t t-call="web.html_container">
-      <t t-call="web.internal_layout">
+      <t t-call="web.external_layout">
         <div class="page">
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-xs-12 text-center">
@@ -32,13 +32,24 @@
             <table class="table table-sm table-bordered" style="margin-bottom: 20px;">
               <thead>
                 <tr style="background-color: #f0f0f0;">
-                  <th>Order</th>
-                  <th>Date</th>
-                  <th>Rule</th>
-                  <th class="text-right">%</th>
-                  <th class="text-right">Untaxed</th>
-                  <th class="text-right">Commission</th>
-                  <th>State</th>
+                  <th>
+                    <strong>Order</strong>
+                  </th>
+                  <th>
+                    <strong>Date</strong>
+                  </th>
+                  <th class="text-end">
+                    <strong>%</strong>
+                  </th>
+                  <th class="text-end">
+                    <strong>Untaxed</strong>
+                  </th>
+                  <th class="text-end">
+                    <strong>Commission</strong>
+                  </th>
+                  <th>
+                    <strong>State</strong>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -52,16 +63,16 @@
                         or ''"
                       />
                     </td>
-                    <td t-esc="l.commission_id.name" />
-                    <td class="text-right">
+
+                    <td class="text-end">
                       <t t-esc="'%.2f' % l.commission_percent" />%
                     </td>
-                    <td class="text-right">
+                    <td class="text-end">
                       <span
                         t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.amount_untaxed)"
                       />
                     </td>
-                    <td class="text-right">
+                    <td class="text-end">
                       <span
                         t-esc="'%s %.2f' % ((l.currency_id.symbol or ''), l.commission_amount)"
                       />
@@ -72,7 +83,7 @@
               </tbody>
               <tfoot>
                 <tr style="font-weight: bold; background-color: #f9f9f9;">
-                  <td colspan="4">Subtotal</td>
+                  <td colspan="3">Subtotal</td>
                   <td class="text-right">
                     <span
                       t-esc="'%s %.2f' % ((group['lines'][0].currency_id.symbol or ''), group['total_untaxed'])"
@@ -88,6 +99,8 @@
               </tfoot>
             </table>
           </t>
+
+          <div class="oe_structure" />
 
           <div style="page-break-before: avoid;">
             <h3>Summary</h3>
